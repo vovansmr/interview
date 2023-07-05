@@ -21,6 +21,6 @@ public class SumCubes {
 
 		solve.setAlgoritm(new BruteForce());
 		solve.calc();
-	}
+	} 
 
 }
