@@ -1,4 +1,4 @@
-package sumofcubes;
+
 
 import input.MyInput;
 import myinterfaces.Inputs;
