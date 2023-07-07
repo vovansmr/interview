@@ -2,10 +2,13 @@ package solves;
 
 import myinterfaces.Algoritm;
 import myinterfaces.Inputs;
+import myinterfaces.TimeCalculator;
+import timecalculators.TimeCalculatorSimple;
 
 public class Solve {
 	private Inputs inputs=null;
 	private Algoritm algoritm=null;
+	private TimeCalculator calculator= new TimeCalculatorSimple();
 	
 	public Algoritm getAlgoritm() {
 		return algoritm;
@@ -22,7 +25,7 @@ public class Solve {
 
 	public Solve() {
 	}
-
+	
 	public Inputs getInputs() {
 		return inputs;
 	}
@@ -33,16 +36,13 @@ public class Solve {
 	
 	public int calc() {
 		int result=0;
-		long time2,time1;
-		if (inputs==null||algoritm==null)System.out.println("Inputs or algoritm not set");
-		else {
-			System.out.println("Start algoritm "+ algoritm.getAlgoritmName());
-			time1=System.nanoTime();
-			result=algoritm.calc(inputs.getMin(),inputs.getMax());		
-			time2=System.nanoTime();
-			System.out.println("Found "+result+ " solves");
-			System.out.println("End algoritm "+ algoritm.getAlgoritmName()+"\nWorking time " + (time2-time1)/1000000000.0+"sec.\n");
-		}
+		if (inputs==null||algoritm==null) throw new IllegalArgumentException("Inputs or algoritm not set");
+		if (inputs.getWriteInfo())System.out.println("Start algoritm "+ algoritm.getAlgoritmName()+" min=" +inputs.getMin()+ " max="+inputs.getMax()+ ".");
+		calculator.start(inputs.getWriteInfo());
+		result=algoritm.calc(inputs.getMin(),inputs.getMax(),calculator,inputs.getWriteSolve());		
+		calculator.stop();
+		if (inputs.getWriteInfo())System.out.println("Found "+result+ " solves.");
+		if (inputs.getWriteInfo())System.out.println("End algoritm "+ algoritm.getAlgoritmName()+"."+calculator.getStatus());
 		return result;
 	}
 

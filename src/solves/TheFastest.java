@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 import myinterfaces.Algoritm;
+import myinterfaces.TimeCalculator;
 
 public class TheFastest implements Algoritm{
 	
@@ -13,15 +14,22 @@ public class TheFastest implements Algoritm{
 	}
 	
 	@Override
-	public int calc(int min,int max) {
+	public int calc(int min,int max,TimeCalculator calculator, boolean writeSolve) {
 		
 		class Data{
 			int a;
+			int b;
+			
 			public Data(int a, int b) {
 				this.a = a;
 				this.b = b;
 			}
-			int b;
+			
+			@Override
+			public String toString() {
+				return a + "^3+" + b + "^3";
+			}
+
 			@Override
 			public int hashCode() {
 				return Objects.hash(a, b);
@@ -41,7 +49,8 @@ public class TheFastest implements Algoritm{
 		
 		HashMap <Integer,HashMap <Integer,Data>> map=new HashMap<Integer,HashMap <Integer,Data>>();
 		HashMap <Integer,Data> tmphash;
-		int countSolves=0;
+		int countSolves=0,counter=0;
+		calculator.setTotalCounter((max-min+1)*(max-min+1));
 		for (int a=min;a<=max;a++)
 			for (int b=min;b<=max;b++) {
 				Integer key = a*a*a+b*b*b;
@@ -51,9 +60,15 @@ public class TheFastest implements Algoritm{
 				}else 
 					tmphash=map.get(key);
 				tmphash.put(tmphash.size(), new Data(a,b));
+				calculator.setCounter(++counter);
 			}
-		for (HashMap<Integer, Data> tmp :map.values()) 
-			countSolves+=tmp.size()*tmp.size();			
+		for (HashMap<Integer, Data> tmp :map.values()) {
+			countSolves+=tmp.size()*tmp.size();
+			if (writeSolve)
+				for (int i=0;i<tmp.size();i++)
+					for (int j=0;j<tmp.size();j++)
+						System.out.println(tmp.get(i) + "=" + tmp.get(j));
+		}	
 		return countSolves;
 	}
 }

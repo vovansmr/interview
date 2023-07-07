@@ -1,26 +1,17 @@
 
 
-import input.MyInput;
-import myinterfaces.Inputs;
-import solves.BruteForce;
-import solves.BruteForceFaster;
-import solves.Solve;
-import solves.TheFastest;
+import utils.SolvesBuilder;
 
 public class SumCubes {
 
 	public static void main(String[] args) {
-		Inputs input = new MyInput();
-		Solve solve=new Solve(input,new TheFastest());
-		
-		input.setMax(100);
-		solve.calc();
-		
-		solve.setAlgoritm(new BruteForceFaster());
-		solve.calc();
 
-		solve.setAlgoritm(new BruteForce());
-		solve.calc();
+		SolvesBuilder solvesBuilder= new SolvesBuilder();
+		solvesBuilder.addSolve("TF").setMin(10).setMax(100).addSolve("BFF").setMin(10).setMax(11).
+		addSolve("BF").setMin(150).setMax(200).buildAndRun();
+		/*writeSolveOn().writeInfoOff().
+		addSolve("BFF").setMin(10).setMax(11).
+		addSolve("BF").setMin(150).setMax(2000).build();*/
 	} 
 
 }
