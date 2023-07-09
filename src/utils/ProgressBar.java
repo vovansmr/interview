@@ -1,16 +1,18 @@
 package utils;
 public class ProgressBar {
 	public static final long sec1=1000000000;
+	private final int size = 10;
 	private long lastDone=0;
 	private long startTimer=0;
 	private boolean enable=true;
+	private LoadMessages messages= LoadMessages.getInstance();
 	
 	public String getTime(long done,long total) {
-		StringBuilder time = new StringBuilder(" time left ");
+		StringBuilder time = new StringBuilder(messages.getProp("timeleft"));
 		long currentTime=System.nanoTime();
 		long tmp=(long) (((currentTime- startTimer)*(total*1.0/done)-(currentTime-startTimer))/sec1);
 		time.append(tmp);
-		time.append(" sec.");
+		time.append(messages.getProp("sec"));
 		return time.toString();
 	}
 	
@@ -18,13 +20,12 @@ public class ProgressBar {
         long donePercents = (100 * done) / total;
         if (enable&&(100==donePercents||System.nanoTime()>lastDone)) {
         	lastDone=System.nanoTime()+sec1;
-        	int size = 10;
 	        String iconLeftBoundary = "[";
 	        String iconDone = "=";
 	        String iconRemain = ".";
 	        String iconRightBoundary = "]";
 	        if (done > total) {
-	            throw new IllegalArgumentException("done = " + done+ " total = "+ total);
+	            throw new IllegalArgumentException(messages.getProp("done") + done+ messages.getProp("total")+ total);
 	        }
 	        long doneLength = size * donePercents / 100;	
 	        StringBuilder bar = new StringBuilder(iconLeftBoundary);

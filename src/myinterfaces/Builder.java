@@ -7,4 +7,6 @@ public interface Builder {
 	Builder writeSolveOn();
 	Builder writeInfoOff();
 	void buildAndRun();
+	public boolean checkParam();
+	public boolean getNoError();
 }

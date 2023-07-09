@@ -1,26 +1,32 @@
 package solves;
 
-import myinterfaces.Algoritm;
+import myinterfaces.Algorithm;
 import myinterfaces.Inputs;
 import myinterfaces.TimeCalculator;
+import myinterfaces.TimeForProgressBar;
+import myinterfaces.WriteSolve;
 import timecalculators.TimeCalculatorSimple;
+import utils.LoadMessages;
+import writesolve.WriteSolveToConsole;
 
 public class Solve {
 	private Inputs inputs=null;
-	private Algoritm algoritm=null;
+	private Algorithm algorithm=null;
 	private TimeCalculator calculator= new TimeCalculatorSimple();
+	private LoadMessages messages=LoadMessages.getInstance();
+	private WriteSolve solve=new WriteSolveToConsole();
 	
-	public Algoritm getAlgoritm() {
-		return algoritm;
+	public Algorithm getAlgorithm() {
+		return algorithm;
 	}
 
-	public void setAlgoritm(Algoritm algoritm) {
-		this.algoritm = algoritm;
+	public void setAlgorithm(Algorithm algorithm) {
+		this.algorithm = algorithm;
 	}
 
-	public Solve(Inputs inputs, Algoritm algoritm) {
+	public Solve(Inputs inputs, Algorithm algorithm) {
 		this.inputs = inputs;
-		this.algoritm = algoritm;
+		this.algorithm = algorithm;
 	}
 
 	public Solve() {
@@ -36,13 +42,16 @@ public class Solve {
 	
 	public int calc() {
 		int result=0;
-		if (inputs==null||algoritm==null) throw new IllegalArgumentException("Inputs or algoritm not set");
-		if (inputs.getWriteInfo())System.out.println("Start algoritm "+ algoritm.getAlgoritmName()+" min=" +inputs.getMin()+ " max="+inputs.getMax()+ ".");
+		if (inputs==null||algorithm==null) throw new IllegalArgumentException(messages.getProp("inputsER"));
+		if (inputs.getWriteInfo())System.out.println(messages.getProp("StartAL")+ algorithm.getAlgorithmName()+messages.getProp("min")
+			+inputs.getMin()+ messages.getProp("max")+inputs.getMax()+ messages.getProp("dot"));
 		calculator.start(inputs.getWriteInfo());
-		result=algoritm.calc(inputs.getMin(),inputs.getMax(),calculator,inputs.getWriteSolve());		
+		result=algorithm.calc(inputs.getMin(),inputs.getMax(),(TimeForProgressBar)calculator,inputs.getWriteSolve(),solve);		
 		calculator.stop();
-		if (inputs.getWriteInfo())System.out.println("Found "+result+ " solves.");
-		if (inputs.getWriteInfo())System.out.println("End algoritm "+ algoritm.getAlgoritmName()+"."+calculator.getStatus());
+		solve.printAll();
+		solve.clear();
+		if (inputs.getWriteInfo())System.out.println(messages.getProp("found")+result+ messages.getProp("solves"));
+		if (inputs.getWriteInfo())System.out.println(messages.getProp("endalgo")+ algorithm.getAlgorithmName()+messages.getProp("dot")+calculator.getStatus());
 		return result;
 	}
 

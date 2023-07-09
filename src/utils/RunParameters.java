@@ -1,22 +1,18 @@
 package utils;
 
-import myinterfaces.Algoritm;
-import myinterfaces.Inputs;
+import myinterfaces.Algorithm;
+import myinterfaces.Constants;
 
 public class RunParameters {
-	private int min=Inputs.MIN;
-	private int max=Inputs.MAX;
+	private int min=Constants.MIN;
+	private int max=Constants.MAX;
 	private boolean writeSolve=false;
 	private boolean writeInfo=true;
-	private Algoritm algoritm=null;
-	private AlgoritmNane name=AlgoritmNane.THEFASTEST;
+	private Algorithm algorithm=null;
+	private AlgorithmNane name=AlgorithmNane.NO;
+	
 	public int getMin() {
 		return min;
-	}
-	@Override
-	public String toString() {
-		return "RunParameters [min=" + min + ", max=" + max + ", writeSolve=" + writeSolve + ", writeInfo=" + writeInfo
-				+ ", algoritm=" + algoritm + ", name=" + name + "]";
 	}
 	public void setMin(int min) {
 		this.min = min;
@@ -39,16 +35,20 @@ public class RunParameters {
 	public void setWriteInfo(boolean writeInfo) {
 		this.writeInfo = writeInfo;
 	}
-	public AlgoritmNane getName() {
+	public AlgorithmNane getName() {
 		return name;
 	}
-	public void setName(AlgoritmNane name) {
+	public void setName(AlgorithmNane name) {
 		this.name = name;
 	}
-	public Algoritm getAlgoritm() {
-		return algoritm;
+	public Algorithm getAlgorithm() {
+		return algorithm;
 	}
-	public void setAlgoritm(Algoritm algoritm) {
-		this.algoritm = algoritm;
+	public void setAlgorithm(Algorithm algorithm) {
+		this.algorithm = algorithm;
+	}
+	public void setNameAndAlgorithm(AlgorithmNane name,Algorithm algorithm) {
+		setName(name);
+		setAlgorithm(algorithm);
 	}
 }

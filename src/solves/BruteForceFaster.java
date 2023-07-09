@@ -1,17 +1,20 @@
 package solves;
 
-import myinterfaces.Algoritm;
-import myinterfaces.TimeCalculator;
+import myinterfaces.Algorithm;
+import myinterfaces.TimeForProgressBar;
+import myinterfaces.WriteSolve;
+import utils.LoadMessages;
 
-public class BruteForceFaster implements Algoritm{
-	
+public class BruteForceFaster implements Algorithm{
+	private LoadMessages messages=LoadMessages.getInstance();
+
 	@Override
-	public String getAlgoritmName() {
-		return "BruteForceFaster";
+	public String getAlgorithmName() {
+		return messages.getProp("BruteForceFaster");
 	}
 	
 	@Override
-	public int calc(int min,int max,TimeCalculator calculator,boolean writeSolve) {
+	public int calc(int min,int max,TimeForProgressBar calculator,boolean writeSolve,WriteSolve solve) {
 		int countSolves=0,counter=0;
 		calculator.setTotalCounter((max-min+1)*(max-min+1)*(max-min+1));
 		for (int a=min;a<=max;a++)
@@ -21,7 +24,7 @@ public class BruteForceFaster implements Algoritm{
 						calculator.setCounter(++counter);
 						if (tmp>=min&&tmp<=max&&tmp-((int)tmp)==0) {
 							countSolves++; 
-							if (writeSolve)System.out.println(a+"^3+"+b+"^3="+c+"^3+"+(int)tmp+"^3");
+							if (writeSolve) solve.add(a, b, c, (int)tmp);
 						}
 				}			
 		return countSolves;
