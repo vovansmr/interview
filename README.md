@@ -12,7 +12,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/vovansmr/interview">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.jpg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">project_title</h3>
@@ -199,7 +199,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - vovansmr@mail.ru
+Your Name - vovansmr@mail.ru
 
 Project Link: [https://github.com/vovansmr/interview](https://github.com/vovansmr/interview)
 
@@ -216,6 +216,6 @@ Project Link: [https://github.com/vovansmr/interview](https://github.com/vovansm
 [issues-shield]: https://img.shields.io/github/issues/vovansmr/interview.svg?style=for-the-badge
 [issues-url]: https://github.com/vovansmr/interview/issues
 [license-shield]: https://img.shields.io/github/license/vovansmr/interview.svg?style=for-the-badge
-[license-url]: https://github.com/vovansmr/interview/main/LICENSE.txt
+[license-url]: https://github.com/vovansmr/interview/main/LICENSE.txt](https://github.com/vovansmr/interview/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [product-screenshot]: images/screenshot.png
