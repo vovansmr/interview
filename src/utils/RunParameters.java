@@ -6,10 +6,10 @@ import myinterfaces.Constants;
 public class RunParameters {
 	private int min=Constants.MIN;
 	private int max=Constants.MAX;
-	private boolean writeSolve=false;
+	private boolean writeSolution=false;
 	private boolean writeInfo=true;
 	private Algorithm algorithm=null;
-	private AlgorithmNane name=AlgorithmNane.NO;
+	private AlgorithmType type=AlgorithmType.NO;
 	
 	public int getMin() {
 		return min;
@@ -23,11 +23,11 @@ public class RunParameters {
 	public void setMax(int max) {
 		this.max = max;
 	}
-	public boolean isWriteSolve() {
-		return writeSolve;
+	public boolean isWriteSolution() {
+		return writeSolution;
 	}
-	public void setWriteSolve(boolean writeSolve) {
-		this.writeSolve = writeSolve;
+	public void setWriteSolution(boolean writeSolution) {
+		this.writeSolution = writeSolution;
 	}
 	public boolean isWriteInfo() {
 		return writeInfo;
@@ -35,20 +35,17 @@ public class RunParameters {
 	public void setWriteInfo(boolean writeInfo) {
 		this.writeInfo = writeInfo;
 	}
-	public AlgorithmNane getName() {
-		return name;
+	public AlgorithmType getType() {
+		return type;
 	}
-	public void setName(AlgorithmNane name) {
-		this.name = name;
+	public void setType(AlgorithmType type) {
+		this.type = type;
 	}
 	public Algorithm getAlgorithm() {
 		return algorithm;
 	}
 	public void setAlgorithm(Algorithm algorithm) {
 		this.algorithm = algorithm;
-	}
-	public void setNameAndAlgorithm(AlgorithmNane name,Algorithm algorithm) {
-		setName(name);
-		setAlgorithm(algorithm);
+		type= algorithm.getAlgorithmType();
 	}
 }

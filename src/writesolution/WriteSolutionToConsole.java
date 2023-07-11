@@ -1,12 +1,11 @@
-package writesolve;
+package writesolution;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import myinterfaces.WriteSolve;
-import solves.TheFastestData;
+import myinterfaces.WriteSolution;
 
-public class WriteSolveToConsole implements WriteSolve{
+public class WriteSolutionToConsole implements WriteSolution{
 	private List<Data> list =new ArrayList<Data>();
 	
 	class Data {
@@ -50,8 +49,8 @@ public class WriteSolveToConsole implements WriteSolve{
 			return a == other.a && b == other.b && c == other.c && d == other.d;
 		}
 
-		private WriteSolveToConsole getEnclosingInstance() {
-			return WriteSolveToConsole.this;
+		private WriteSolutionToConsole getEnclosingInstance() {
+			return WriteSolutionToConsole.this;
 		}		
 	}	
 	
@@ -60,10 +59,6 @@ public class WriteSolveToConsole implements WriteSolve{
 		list.add(new Data(a,b,c,d));		
 	}
 	
-	public void add(TheFastestData left, TheFastestData right) {
-		list.add(new Data(left.getA(),left.getB(),right.getA(),right.getB()));
-	}
-
 	@Override
 	public void clear() {
 		list.clear();		

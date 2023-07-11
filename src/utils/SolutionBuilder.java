@@ -4,20 +4,20 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 import input.MyInput;
+import myinterfaces.Algorithm;
 import myinterfaces.Builder;
 import myinterfaces.Inputs;
-import solves.BruteForce;
-import solves.BruteForceFaster;
-import solves.Solve;
-import solves.TheFastest;
+import myinterfaces.SimpleAlgorithmFactory;
+import solves.Solution;
 
-public class SolvesBuilder implements Builder{
+public class SolutionBuilder implements Builder{
 	
 	private RunParameters parameters=null;
 	private Queue<RunParameters> run = new ArrayDeque<RunParameters>(); 
 	private boolean noError=true;
 	private LoadMessages messages=LoadMessages.getInstance();
 	private CheckMinMaxClass check = CheckMinMaxClass.getInstance();
+	private SimpleAlgorithmFactory factory=new AlgorithmFactory();
 	
 	public boolean getNoError() {
 		boolean result =noError;
@@ -25,40 +25,16 @@ public class SolvesBuilder implements Builder{
 		return result;
 	}
 	@Override
-	public Builder addSolve(String algoritm) {
+	public Builder addSolution(String algorithm) {
 		if(parameters==null) parameters=new RunParameters();
 		else {
-			run.add(parameters);
+			if(parameters.getAlgorithm().getAlgorithmType()!=AlgorithmType.NO) run.add(parameters);
 			parameters=new RunParameters();
 		}
-		noError=true;
-		
-		switch (algoritm) {		
-			case "bruteforse":
-			case "BRUTEFORSE":
-	        case "BF":
-	        	parameters.setNameAndAlgorithm(AlgorithmNane.BRUTEFORSE, new BruteForce());
-	            break;
-	            
-	        case "bruteforsefaster":   
-	        case "BRUTEFORSEFASTER":
-	        case "BFF":
-	        	parameters.setNameAndAlgorithm(AlgorithmNane.BRUTEFORSEFASTER,new BruteForceFaster());
-	            break;
-	                     
-	        case "THEFASTEST":
-	        case "thefastest":
-	        case "TF":
-	        	parameters.setNameAndAlgorithm(AlgorithmNane.THEFASTEST,new TheFastest());
-	            break;  
-	            
-	        default:
-	        	noError=false;
-	        	System.err.println(messages.getProp("wrongalgorithm"));
-	        	parameters=null;
-	        	break;
-            
-		}
+		Algorithm algo= factory.GetAlgorithm(algorithm);
+		if (algo!=null)parameters.setAlgorithm(algo);
+		noError=factory.getNoError();
+		if (!noError) parameters=null;
 		return this;
 	}
 
@@ -85,8 +61,8 @@ public class SolvesBuilder implements Builder{
 	}
 
 	@Override
-	public Builder writeSolveOn() {
-		if (check(messages.getProp("selectalgo"))) parameters.setWriteSolve(true);	
+	public Builder writeSolutionOn() {
+		if (check(messages.getProp("selectalgo"))) parameters.setWriteSolution(true);	
 		return this;
 	}
 
@@ -117,8 +93,8 @@ public class SolvesBuilder implements Builder{
 				run.forEach((param)->{
 					Inputs inputs=  new MyInput(param.getMin(),param.getMax());
 					inputs.setWriteInfo(param.isWriteInfo());
-					inputs.setWriteSolve(param.isWriteSolve());
-					Solve solve= new Solve(inputs,param.getAlgorithm());
+					inputs.setWriteSolution(param.isWriteSolution());
+					Solution solve= new Solution(inputs,param.getAlgorithm());
 					solve.calc();
 				});
 			run.clear();

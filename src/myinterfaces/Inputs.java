@@ -5,8 +5,8 @@ public interface Inputs {
 	public void setMin(int min);
 	public int getMax();
 	public void setMax(int max);
-	public void setWriteSolve(boolean writeSolve);
-	public boolean getWriteSolve();
+	public void setWriteSolution(boolean writeSolution);
+	public boolean getWriteSolution();
 	public boolean getWriteInfo();
 	public void setWriteInfo(boolean writeInfo);
 }

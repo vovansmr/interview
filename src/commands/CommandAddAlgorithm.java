@@ -7,7 +7,7 @@ public class CommandAddAlgorithm implements Commands {
 
 	@Override
 	public boolean execute(String param, Builder builder,CommandType type) {
-		builder.addSolve(param);
+		builder.addSolution(param);
 		return builder.getNoError();
 	}
 }

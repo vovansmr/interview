@@ -8,7 +8,7 @@ import java.util.HashMap;
 import myinterfaces.Builder;
 import myinterfaces.Commands;
 import utils.LoadMessages;
-import utils.SolvesBuilder;
+import utils.SolutionBuilder;
 
 public class CommandParser {
 	private HashMap<String, Commands> map;
@@ -33,28 +33,10 @@ public class CommandParser {
 	}
 	
 	private void init() {
-		Commands tmp;
-		String pref="--",pref2="-";
-		if (type==CommandType.RUNINTERACTIVE) {
-			pref="";
-			pref2="";
-		}
-		builder = new SolvesBuilder();
-		map=new HashMap<String, Commands>();
-		map.put(pref+"min", new CommandAddMin());
-		map.put(pref+"max", new CommandAddMax());
-		map.put(pref+"writeinfooff", new CommandAddWriteInfoOff());
-		map.put(pref+"writesolveon", new CommandAddWriteSolveOn());
-		tmp = new CommandAddAlgorithm();
-		map.put(pref+"algorithm", tmp);
-		map.put(pref2+"a", tmp);
-		tmp = new CommandHelp();
-		map.put(pref+"help", tmp);
-		map.put(pref2+"h", tmp);
-		if (type==CommandType.RUNINTERACTIVE) {
-			map.put("run", new CommandRun());
-			map.put("exit", new CommandExit());
-		}
+		builder = new SolutionBuilder();
+		CommandInit commandInit = new CommandInit();
+		map=commandInit.getInitedCommands(type);
+
 	}
 
 	private boolean parseCommands(String[] workString) {

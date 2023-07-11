@@ -211,4 +211,4 @@ Project Link: [https://github.com/vovansmr/interview](https://github.com/vovansm
 [issues-shield]: https://img.shields.io/github/issues/vovansmr/interview.svg?style=for-the-badge
 [issues-url]: https://github.com/vovansmr/interview/issues
 [license-shield]: https://img.shields.io/github/license/vovansmr/interview.svg?style=for-the-badge
-[license-url]: https://github.com/vovansmr/interview/main/LICENSE.txt](https://github.com/vovansmr/interview/blob/main/LICENSE.txt
+[license-url]: https://github.com/vovansmr/interview/main/LICENSE.txt](https://github.com/vovansmr/interview/blob/main/LICENSE.txt)

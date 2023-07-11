@@ -7,7 +7,7 @@ import myinterfaces.Constants;
 public class MyInput implements Inputs {
 	private int min=Constants.MIN;
 	private int max=Constants.MAX;
-	private boolean writeSolve=false;
+	private boolean writeSolution=false;
 	private boolean writeInfo=true;
 	private CheckMinMaxClass check= CheckMinMaxClass.getInstance();
 	
@@ -43,13 +43,13 @@ public class MyInput implements Inputs {
 	}
 
 	@Override
-	public void setWriteSolve(boolean  writeSolve) {
-		this.writeSolve=writeSolve;		
+	public void setWriteSolution(boolean  writeSolution) {
+		this.writeSolution=writeSolution;		
 	}
 
 	@Override
-	public boolean getWriteSolve() {		
-		return writeSolve;
+	public boolean getWriteSolution() {		
+		return writeSolution;
 	}
 
 	@Override

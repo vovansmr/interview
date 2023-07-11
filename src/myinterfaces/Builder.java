@@ -1,10 +1,10 @@
 package myinterfaces;
 
 public interface Builder {
-	Builder addSolve(String algoritm);
+	Builder addSolution(String algoritm);
 	Builder setMin(int min);
 	Builder setMax(int max);
-	Builder writeSolveOn();
+	Builder writeSolutionOn();
 	Builder writeInfoOff();
 	void buildAndRun();
 	public boolean checkParam();

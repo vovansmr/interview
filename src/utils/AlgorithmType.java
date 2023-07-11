@@ -1,5 +1,5 @@
 package utils;
 
-public enum AlgorithmNane {
+public enum AlgorithmType {
 	NO,BRUTEFORSE,BRUTEFORSEFASTER,THEFASTEST
 }

@@ -3,11 +3,11 @@ package commands;
 import myinterfaces.Builder;
 import myinterfaces.Commands;
 
-public class CommandAddWriteSolveOn implements Commands {
+public class CommandAddWriteSolutionOn implements Commands {
 
 	@Override
 	public boolean execute(String param, Builder builder,CommandType type) {
-		builder.writeSolveOn();
+		builder.writeSolutionOn();
 		return builder.getNoError();	
 	}
 }
