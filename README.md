@@ -37,16 +37,16 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#1.-bruteforse:">1. BruteForse:</a></li>
-	<li><a href="#2.-bruteforcefaster-(fast algorithm):">2. BruteForceFaster</a></li>
-	<li><a href="#3.-TheFastest:">3. TheFastest</a></li>
+        <li><a href="#1-bruteforse">1. BruteForse:</a></li>
+	<li><a href="#2-bruteforcefaster-fast-algorithm">2. BruteForceFaster</a></li>
+	<li><a href="#3-thefastest">3. TheFastest</a></li>
       </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#installation">Installation</a></li>
-	<li><a href="#design-patterns:">design-patterns</a></li>
+	<li><a href="#design-patterns">design-patterns</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -192,7 +192,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- CONTACT -->
 ## Contact
-
+my name is Vladimir I am looking for a job as a java developer in Russia
 [Telegram](https://t.me/vovansmr)
 vovansmr@mail.ru
 
