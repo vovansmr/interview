@@ -1,3 +1,4 @@
+<a name="readme-top"></a>
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -5,20 +6,16 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/vovansmr/interview">
-    <img src="images/logo.jpg" alt="Logo" width="80" height="80">
+    <img src="logo.jpg" alt="SumCubes" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center"></h3>
 
   <p align="center">
-    project_description
     <br />
     <a href="https://github.com/vovansmr/interview"><strong>Explore the docs »</strong></a>
     <br />
@@ -63,12 +60,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 ### During a technical interview, a task is encountered
 ```
- a ^ 3 + b ^ 3 = c ^ 3 + d ^ 3 
+a ^ 3 + b ^ 3 = c ^ 3 + d ^ 3 
 where 1<=a, b, c, d<=1000.
 ```
 It can be solved in 3 ways:
@@ -147,7 +141,7 @@ the following patterns were used in the development
  ```
 	java SumCubes
 ```
-Or run with parameters:
+4. Or run with parameters:
 ```
   java SumCubes --algorithm=BRUTEFORSE [--help] [--min=1] [--max=50] [--writeinfooff] [--writesolutionon]
    ```
@@ -199,7 +193,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - vovansmr@mail.ru
+[Vladimir](https://t.me/vovansmr)
+vovansmr@mail.ru
 
 Project Link: [https://github.com/vovansmr/interview](https://github.com/vovansmr/interview)
 
@@ -217,5 +212,3 @@ Project Link: [https://github.com/vovansmr/interview](https://github.com/vovansm
 [issues-url]: https://github.com/vovansmr/interview/issues
 [license-shield]: https://img.shields.io/github/license/vovansmr/interview.svg?style=for-the-badge
 [license-url]: https://github.com/vovansmr/interview/main/LICENSE.txt](https://github.com/vovansmr/interview/blob/main/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[product-screenshot]: images/screenshot.png
