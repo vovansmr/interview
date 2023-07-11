@@ -216,6 +216,6 @@ Project Link: [https://github.com/vovansmr/interview](https://github.com/vovansm
 [issues-shield]: https://img.shields.io/github/issues/vovansmr/interview.svg?style=for-the-badge
 [issues-url]: https://github.com/vovansmr/interview/issues
 [license-shield]: https://img.shields.io/github/license/vovansmr/interview.svg?style=for-the-badge
-[license-url]: https://github.com/vovansmr/interview/main/LICENSE
+[license-url]: https://github.com/vovansmr/interview/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [product-screenshot]: images/screenshot.png
