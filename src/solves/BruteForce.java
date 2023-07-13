@@ -1,18 +1,25 @@
 package solves;
 
-import myinterfaces.Algorithm;
-import myinterfaces.TimeForProgressBar;
-import myinterfaces.WriteSolution;
+import myinterfaces.Algorithmable;
+import myinterfaces.Barable;
+import myinterfaces.Writeble;
 import utils.AlgorithmType;
-
-public class BruteForce implements Algorithm{
-	@Override
+	/**
+	 * BruteForce algorithm
+	 */
+public class BruteForce implements Algorithmable{
+	/**
+	 * 	Algorithm Type Inference
+	 */
+	@Override	
 	public AlgorithmType getAlgorithmType() {
 		return AlgorithmType.BRUTEFORSE;
 	}
-
+	/**
+	 * Calculation start method. 	
+	 */
 	@Override
-	public int calc(int min,int max,TimeForProgressBar calculator,boolean writeSolution,WriteSolution solution) {
+	public int calc(int min,int max,Barable calculator,boolean writeSolution,Writeble solution) {
 		int countSolution=0;
 		long counter=(max-min+1);
 		counter*=counter*counter*counter;
@@ -24,6 +31,7 @@ public class BruteForce implements Algorithm{
 					for (int d=min;d<=max;d++) {
 						if (Math.pow(a, 3)+Math.pow(b, 3)==Math.pow(c, 3)+Math.pow(d, 3)) {
 							countSolution++; 
+							//Output of the calculated solution
 							if (writeSolution) solution.add(a, b, c, d);
 						}
 						calculator.setCounter(++counter);

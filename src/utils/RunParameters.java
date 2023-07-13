@@ -1,51 +1,45 @@
 package utils;
 
-import myinterfaces.Algorithm;
-import myinterfaces.Constants;
-
+import input.MyInput;
+import myinterfaces.Algorithmable;
+import myinterfaces.Inputable;
+/**
+ * Class for storing data about the algorithm and data entered by the user
+ */
 public class RunParameters {
-	private int min=Constants.MIN;
-	private int max=Constants.MAX;
-	private boolean writeSolution=false;
-	private boolean writeInfo=true;
-	private Algorithm algorithm=null;
-	private AlgorithmType type=AlgorithmType.NO;
+	private Inputable input= new MyInput();
+	private Algorithmable algorithm=null;
 	
 	public int getMin() {
-		return min;
+		return input.getMin();
 	}
 	public void setMin(int min) {
-		this.min = min;
+		input.setMin(min);
 	}
 	public int getMax() {
-		return max;
+		return input.getMax();
 	}
 	public void setMax(int max) {
-		this.max = max;
+		input.setMax(max);
 	}
+		
 	public boolean isWriteSolution() {
-		return writeSolution;
+		return input.getWriteSolution();
 	}
+		
 	public void setWriteSolution(boolean writeSolution) {
-		this.writeSolution = writeSolution;
+		input.setWriteSolution(writeSolution);;
 	}
 	public boolean isWriteInfo() {
-		return writeInfo;
+		return input.getWriteInfo();
 	}
 	public void setWriteInfo(boolean writeInfo) {
-		this.writeInfo = writeInfo;
+		input.setWriteInfo(writeInfo);;
 	}
-	public AlgorithmType getType() {
-		return type;
-	}
-	public void setType(AlgorithmType type) {
-		this.type = type;
-	}
-	public Algorithm getAlgorithm() {
+	public Algorithmable getAlgorithm() {
 		return algorithm;
 	}
-	public void setAlgorithm(Algorithm algorithm) {
+	public void setAlgorithm(Algorithmable algorithm) {
 		this.algorithm = algorithm;
-		type= algorithm.getAlgorithmType();
 	}
 }

@@ -1,12 +1,14 @@
 package commands;
 
-import myinterfaces.Builder;
-import myinterfaces.Commands;
-
-public class CommandAddWriteSolutionOn implements Commands {
+import myinterfaces.Builderable;
+import myinterfaces.Commandable;
+	/**
+	 * Command for displaying the solution of an equation. Adds to the queue
+	 */
+public class CommandAddWriteSolutionOn implements Commandable {
 
 	@Override
-	public boolean execute(String param, Builder builder,CommandType type) {
+	public boolean execute(String param, Builderable builder,CommandType type) {
 		builder.writeSolutionOn();
 		return builder.getNoError();	
 	}

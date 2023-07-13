@@ -1,20 +1,26 @@
 package solves;
 
-import myinterfaces.Algorithm;
-import myinterfaces.TimeForProgressBar;
-import myinterfaces.WriteSolution;
+import myinterfaces.Algorithmable;
+import myinterfaces.Barable;
+import myinterfaces.Writeble;
 import utils.AlgorithmType;
+	/**
+	 * BruteForceFaster algorithm
+	 */
 
-
-public class BruteForceFaster implements Algorithm{
-
+public class BruteForceFaster implements Algorithmable{
+	/**
+	 * 	Algorithm Type Inference
+	 */
 	@Override
 	public AlgorithmType getAlgorithmType() {
 		return AlgorithmType.BRUTEFORSEFASTER;
 	}
-	
+	/**
+	 * Calculation start method. 
+	 */	
 	@Override
-	public int calc(int min,int max,TimeForProgressBar calculator,boolean writeSolution,WriteSolution solution) {
+	public int calc(int min,int max,Barable calculator,boolean writeSolution,Writeble solution) {
 		int countSolution=0,counter=0;
 		calculator.setTotalCounter((max-min+1)*(max-min+1)*(max-min+1));
 		for (int a=min;a<=max;a++)
@@ -24,11 +30,11 @@ public class BruteForceFaster implements Algorithm{
 						calculator.setCounter(++counter);
 						if (tmp>=min&&tmp<=max&&tmp-((int)tmp)==0) {
 							countSolution++; 
+							//Output of the calculated solution
 							if (writeSolution) solution.add(a, b, c, (int)tmp);
 						}
 				}			
 		return countSolution;
 	}
-
 
 }

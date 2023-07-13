@@ -1,20 +1,27 @@
 package solves;
 
 import java.util.HashMap;
-import myinterfaces.Algorithm;
-import myinterfaces.TimeForProgressBar;
-import myinterfaces.WriteSolution;
+import myinterfaces.Algorithmable;
+import myinterfaces.Barable;
+import myinterfaces.Writeble;
 import utils.AlgorithmType;
 import writesolution.AdapterWriteSolutionToConsole;
-
-public class TheFastest implements Algorithm{
+	/**
+	 * TheFastest algorithm
+	 */
+public class TheFastest implements Algorithmable{
+	/**
+	 * 	Algorithm Type Inference
+	 */
 	@Override
 	public AlgorithmType getAlgorithmType() {
 		return AlgorithmType.THEFASTEST;
 	}
-	
+	/**
+	 * Calculation start method. 	
+	 */	
 	@Override
-	public int calc(int min,int max,TimeForProgressBar calculator, boolean writeSolution,WriteSolution solution) {
+	public int calc(int min,int max,Barable calculator, boolean writeSolution,Writeble solution) {
 		HashMap <Integer,HashMap <Integer,TheFastestData>> map=new HashMap<Integer,HashMap <Integer,TheFastestData>>();
 		HashMap <Integer,TheFastestData> tmphash;
 		int countSolution=0,counter=0;
@@ -30,8 +37,9 @@ public class TheFastest implements Algorithm{
 				tmphash.put(tmphash.size(), new TheFastestData(a,b));
 				calculator.setCounter(++counter);
 			}
+		// Algorithm solution output adapter
 		AdapterWriteSolutionToConsole adapter =new AdapterWriteSolutionToConsole(solution);
-		
+		// Output of the calculated solution
 		for (HashMap<Integer, TheFastestData> tmp :map.values()) {
 			countSolution+=tmp.size()*tmp.size();
 			if (writeSolution)

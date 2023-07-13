@@ -1,55 +1,88 @@
 package solves;
 
-import myinterfaces.Algorithm;
-import myinterfaces.Inputs;
-import myinterfaces.TimeCalculator;
-import myinterfaces.TimeForProgressBar;
-import myinterfaces.WriteSolution;
+import myinterfaces.Algorithmable;
+import myinterfaces.Inputable;
+import myinterfaces.Temporally;
+import myinterfaces.Barable;
+import myinterfaces.Writeble;
 import timecalculators.TimeCalculatorSimple;
 import utils.LoadMessages;
 import writesolution.WriteSolutionToConsole;
-
+	/**
+	 * Class for managing solution calculation
+	 */
 public class Solution {
-	private Inputs inputs=null;
-	private Algorithm algorithm=null;
-	private TimeCalculator calculator= new TimeCalculatorSimple();
+	private Inputable inputs=null;
+	private Algorithmable algorithm=null;
+	private Temporally calculator= new TimeCalculatorSimple();
 	private LoadMessages messages=LoadMessages.getInstance();
-	private WriteSolution solution=new WriteSolutionToConsole();
-	
-	public Algorithm getAlgorithm() {
+	private Writeble solution=new WriteSolutionToConsole();
+	/**
+	 * Gets the algorithm to calculate
+	 * @return algorithm {@link Algorithmable}
+	 */
+	public Algorithmable getAlgorithm() {
 		return algorithm;
 	}
-
-	public void setAlgorithm(Algorithm algorithm) {
+	/**
+	 * Sets the algorithm for calculations
+	 * @param algorithm {@link Algorithmable}
+	 */
+	public void setAlgorithm(Algorithmable algorithm) {
 		this.algorithm = algorithm;
 	}
-
-	public Solution(Inputs inputs, Algorithm algorithm) {
+	/**
+	 * Constructor with parameters
+	 * @param inputs class for storing data entered by the user
+	 * @param algorithm class for working with the algorithm
+	 * {@link Algorithmable} {@link Inputable}
+	 */
+	public Solution(Inputable inputs, Algorithmable algorithm) {
 		this.inputs = inputs;
 		this.algorithm = algorithm;
 	}
-
+	/**
+	 * Constructor with out parameters
+	 */
 	public Solution() {
 	}
-	
-	public Inputs getInputs() {
+	/**
+	 * Gets the class with the data entered by the user
+	 * @return Inputable class with the data entered by the user
+	 * {@link Inputable}
+	 */
+	public Inputable getInputs() {
 		return inputs;
 	}
-
-	public void setInputs(Inputs inputs) {
+	/**
+	 * Sets a class with the data entered by the user
+	 * @param inputs lass for storing data entered by the user
+	 * {@link Inputable}
+	 */
+	public void setInputs(Inputable inputs) {
 		this.inputs = inputs;
 	}
-	
+	/**
+	 * Method to start calculations
+	 * @return returns the number of solutions found
+	 */
 	public int calc() {
-		int result=0;
+		int result=0;	
+		//Parameter Check
 		if (inputs==null||algorithm==null) throw new IllegalArgumentException(messages.getProp("inputsER"));
 		if (inputs.getWriteInfo())System.out.println(messages.getProp("StartAL")+ algorithm.getAlgorithmType()+messages.getProp("min")
 			+inputs.getMin()+ messages.getProp("max")+inputs.getMax()+ messages.getProp("dot"));
+		//Preparing for time processing 
 		calculator.start(inputs.getWriteInfo());
-		result=algorithm.calc(inputs.getMin(),inputs.getMax(),(TimeForProgressBar)calculator,inputs.getWriteSolution(),solution);		
+		//Start calculation of equation values
+		result=algorithm.calc(inputs.getMin(),inputs.getMax(),(Barable)calculator,inputs.getWriteSolution(),solution);		
+		//Stoping for time processing 
 		calculator.stop();
+		//Print all solutions
 		solution.printAll();
+		//Clear array
 		solution.clear();
+		//Output of service information
 		if (inputs.getWriteInfo())System.out.println(messages.getProp("found")+result+ messages.getProp("solutions"));
 		if (inputs.getWriteInfo())System.out.println(messages.getProp("endalgo")+ algorithm.getAlgorithmType()+messages.getProp("dot")+calculator.getStatus());
 		return result;

@@ -1,21 +1,34 @@
 package input;
 
-import myinterfaces.Inputs;
+import myinterfaces.Inputable;
 import utils.CheckMinMaxClass;
-import myinterfaces.Constants;
-
-public class MyInput implements Inputs {
-	private int min=Constants.MIN;
-	private int max=Constants.MAX;
+import myinterfaces.Constantable;
+	/**
+	 * Class for storing data entered by the user
+	 */
+public class MyInput implements Inputable {
+	private int min=Constantable.MIN;
+	private int max=Constantable.MAX;
+	/**
+	 *  Displaying the solution of an equation.
+	 */
 	private boolean writeSolution=false;
+	/**
+	 *  Disable output of service information. 
+	 */
 	private boolean writeInfo=true;
+	/**
+	 * Class for checking min and max parameters
+	 */
 	private CheckMinMaxClass check= CheckMinMaxClass.getInstance();
-	
+
 	@Override
 	public int getMin() {
 		return min;
 	}
-	
+	/**
+	 * 	Validation value, must be in [MIN, MAX]
+	 */	
 	@Override
 	public void setMin(int min) {
 		if(check.checkMinMax(min,max,false)) 
@@ -26,12 +39,16 @@ public class MyInput implements Inputs {
 	public int getMax() {
 		return max;
 	}
-
+	/**
+	 * 	Validation value, must be in [MIN, MAX]
+	 */
 	@Override
 	public void setMax(int max) {		
 		if (check.checkMinMax(min,max,false))this.max=max;
 	}
-
+	/**
+	 * 	Validation value, must be in [MIN, MAX]
+	 */
 	public MyInput(int min, int max) {
 		if(check.checkMinMax(min,max,false)) {
 			this.min = min;
@@ -41,7 +58,7 @@ public class MyInput implements Inputs {
 
 	public MyInput() {
 	}
-
+	
 	@Override
 	public void setWriteSolution(boolean  writeSolution) {
 		this.writeSolution=writeSolution;		

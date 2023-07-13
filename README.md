@@ -67,6 +67,8 @@ where 1<=a, b, c, d<=1000.
 ```
 It can be solved in 3 ways:
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ### 1. BruteForse:
 ```
 min=1;
@@ -79,6 +81,8 @@ for (int a=min;a<=max;a++)
 ```
 Algorithm execution time О(n^4);
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ### 2. BruteForceFaster (fast algorithm):
 ```
 min=1;
@@ -90,6 +94,8 @@ for (int a=min;a<=max;a++)
 	  if (tmp>=min&&tmp<=max&&tmp-((int)tmp)==0) {}
 ```
 Algorithm execution time О(n^3);
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### 3. TheFastest:
 ```
@@ -130,6 +136,8 @@ the following patterns were used in the development
 - facade
 - lambda expressions were also used.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ### Installation
 
 1. Download Project
@@ -165,6 +173,9 @@ sequential launch of the algorithm:
   BRUTEFORSEFASTER algorithm with the parameters min=1, max=500;
   BRUTEFORSE algorithm with the parameters min=100, max=400
 ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 #### Available options:
 ```
   --algorithm=name, or -a=name required parameter, you can list several algorithms

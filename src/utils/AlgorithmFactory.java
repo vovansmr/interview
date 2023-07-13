@@ -1,25 +1,32 @@
 package utils;
 
-import myinterfaces.Algorithm;
+import myinterfaces.Algorithmable;
 import myinterfaces.SimpleAlgorithmFactory;
 import solves.BruteForce;
 import solves.BruteForceFaster;
 import solves.TheFastest;
-
+/**
+ * Factory for creating algorithms
+ */
 public class AlgorithmFactory implements SimpleAlgorithmFactory {
 	
 	private boolean noError=true;
 	private LoadMessages messages=LoadMessages.getInstance();
-	@Override
+	/**
+	 * Checking the No Error Flag
+	 */
+	@Override	
 	public boolean getNoError() {
 		boolean result =noError;
 		noError=true;
 		return result;
 	}
-
+	/**
+	 * Factory for creating algorithms
+	 */
 	@Override
-	public Algorithm GetAlgorithm(String algorithm) {
-		Algorithm algo=null;
+	public Algorithmable GetAlgorithm(String algorithm) {
+		Algorithmable algo=null;
 		switch (algorithm) {		
 			case "bruteforse":
 			case "BRUTEFORSE":

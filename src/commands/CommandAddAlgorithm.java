@@ -1,12 +1,18 @@
 package commands;
 
-import myinterfaces.Builder;
-import myinterfaces.Commands;
+import myinterfaces.Builderable;
+import myinterfaces.Commandable;
 
-public class CommandAddAlgorithm implements Commands {
-
+	/**
+	 * Сommand to add the selected algorithm to the queue
+	 */
+public class CommandAddAlgorithm implements Commandable {
+	/**
+	 * Сommand to add the selected algorithm to the queue
+	 * @param param String algorithm name
+	 */
 	@Override
-	public boolean execute(String param, Builder builder,CommandType type) {
+	public boolean execute(String param, Builderable builder,CommandType type) {
 		builder.addSolution(param);
 		return builder.getNoError();
 	}

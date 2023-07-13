@@ -1,21 +1,30 @@
 package commands;
 
 import java.util.HashMap;
-import myinterfaces.Commands;
+import myinterfaces.Commandable;
 
+	/**
+	 * Initializing a HashMap with Commands
+	 * 
+	 */	
 public class CommandInit {
 	public CommandInit() {
 		
 	}
-	
-	public HashMap<String, Commands> getInitedCommands(CommandType type) {
-		Commands tmp;
+	/**
+	 * Initializing a HashMap with Commands
+	 * Facade template
+	 * @param type type mode with parameters or interactive {@link CommandType}
+	 * @return HashMap with Commands
+	 */	
+	public HashMap<String, Commandable> getInitedCommands(CommandType type) {
+		Commandable tmp;
 		String pref="--",pref2="-";
 		if (type==CommandType.RUNINTERACTIVE) {
 			pref="";
 			pref2="";
 		}		
-		HashMap<String, Commands>map=new HashMap<String, Commands>();
+		HashMap<String, Commandable>map=new HashMap<String, Commandable>();
 		map.put(pref+"min", new CommandAddMin());
 		map.put(pref+"max", new CommandAddMax());
 		map.put(pref+"writeinfooff", new CommandAddWriteInfoOff());

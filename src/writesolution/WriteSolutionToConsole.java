@@ -3,9 +3,11 @@ package writesolution;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import myinterfaces.WriteSolution;
-
-public class WriteSolutionToConsole implements WriteSolution{
+import myinterfaces.Writeble;
+/**
+ * Solution Conclusion
+ */
+public class WriteSolutionToConsole implements Writeble{
 	private List<Data> list =new ArrayList<Data>();
 	
 	class Data {

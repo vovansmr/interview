@@ -1,12 +1,15 @@
 package commands;
 
-import myinterfaces.Builder;
-import myinterfaces.Commands;
-
-public class CommandRun implements Commands {
+import myinterfaces.Builderable;
+import myinterfaces.Commandable;
+	/**
+	 * Start queue processing
+	 * 
+	 */
+public class CommandRun implements Commandable {
 
 	@Override
-	public boolean execute(String param, Builder builder,CommandType type) {
+	public boolean execute(String param, Builderable builder,CommandType type) {
 		if(builder.checkParam())builder.buildAndRun();
 		return builder.getNoError();		
 	}

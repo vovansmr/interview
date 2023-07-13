@@ -4,13 +4,16 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 import input.MyInput;
-import myinterfaces.Algorithm;
-import myinterfaces.Builder;
-import myinterfaces.Inputs;
+import myinterfaces.Algorithmable;
+import myinterfaces.Builderable;
+import myinterfaces.Inputable;
 import myinterfaces.SimpleAlgorithmFactory;
 import solves.Solution;
-
-public class SolutionBuilder implements Builder{
+	/**
+	 * The execution queue creation class.
+	 * Implemented using the builder template.
+	 */
+public class SolutionBuilder implements Builderable{
 	
 	private RunParameters parameters=null;
 	private Queue<RunParameters> run = new ArrayDeque<RunParameters>(); 
@@ -18,26 +21,33 @@ public class SolutionBuilder implements Builder{
 	private LoadMessages messages=LoadMessages.getInstance();
 	private CheckMinMaxClass check = CheckMinMaxClass.getInstance();
 	private SimpleAlgorithmFactory factory=new AlgorithmFactory();
-	
+	/**
+	 * Checking the No Error Flag
+	 */
 	public boolean getNoError() {
 		boolean result =noError;
 		noError=true;
 		return result;
 	}
+	/**
+	 * Add the selected algorithm to the queue
+	 */
 	@Override
-	public Builder addSolution(String algorithm) {
+	public Builderable addSolution(String algorithm) {
 		if(parameters==null) parameters=new RunParameters();
 		else {
 			if(parameters.getAlgorithm().getAlgorithmType()!=AlgorithmType.NO) run.add(parameters);
 			parameters=new RunParameters();
 		}
-		Algorithm algo= factory.GetAlgorithm(algorithm);
+		Algorithmable algo= factory.GetAlgorithm(algorithm);
 		if (algo!=null)parameters.setAlgorithm(algo);
 		noError=factory.getNoError();
 		if (!noError) parameters=null;
 		return this;
 	}
-
+	/**
+	 * Status check before launch
+	 */
 	private boolean check(String messageOnError) {
 		if (parameters!=null&&parameters.getAlgorithm()!=null){
 			return true;
@@ -47,31 +57,41 @@ public class SolutionBuilder implements Builder{
 		}
 		return false;
 	}
-	
+	/**
+	 * Set the minimum value of the algorithm to the queue
+	 */
 	@Override
-	public Builder setMin(int min) {
+	public Builderable setMin(int min) {
 		if (check(messages.getProp("selectalgo"))) parameters.setMin(min);		
 		return this;
 	}
-
+	/**
+	 * Set the maximum value of the algorithm to the queue
+	 */
 	@Override
-	public Builder setMax(int max) {
+	public Builderable setMax(int max) {
 		if (check(messages.getProp("selectalgo"))) parameters.setMax(max);		
 		return this;
 	}
-
+	/**
+	 * Displaying the solution of an equation by default off. Adds to the queue
+	 */
 	@Override
-	public Builder writeSolutionOn() {
+	public Builderable writeSolutionOn() {
 		if (check(messages.getProp("selectalgo"))) parameters.setWriteSolution(true);	
 		return this;
 	}
-
+	/**
+	 * Disable output of service information by default on. Adds to the queue
+	 */
 	@Override
-	public Builder writeInfoOff() {
+	public Builderable writeInfoOff() {
 		if (check(messages.getProp("selectalgo"))) parameters.setWriteInfo(false);
 		return this;
 	}
-	
+	/**
+	 * Checking entered parameters
+	 */
 	public boolean checkParam() {
 		for (RunParameters param: run) {		
 			if(!check(messages.getProp("wrongalgorithm")))return false;
@@ -84,14 +104,16 @@ public class SolutionBuilder implements Builder{
 		}
 		return true;
 	}
-
+	/**
+	 * Queue start for execution
+	 */
 	@Override
 	public void buildAndRun() {
 		if (noError&&parameters!=null) {
 			run.add(parameters);
 			if (checkParam()) {
 				run.forEach((param)->{
-					Inputs inputs=  new MyInput(param.getMin(),param.getMax());
+					Inputable inputs=  new MyInput(param.getMin(),param.getMax());
 					inputs.setWriteInfo(param.isWriteInfo());
 					inputs.setWriteSolution(param.isWriteSolution());
 					Solution solve= new Solution(inputs,param.getAlgorithm());

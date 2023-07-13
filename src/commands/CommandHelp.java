@@ -1,15 +1,17 @@
 package commands;
 
-import myinterfaces.Builder;
-import myinterfaces.Commands;
+import myinterfaces.Builderable;
+import myinterfaces.Commandable;
 import utils.LoadMessages;
-
-public class CommandHelp implements Commands {
+	/**
+	 * Help command. Works with parameters and in interactive modes
+	 */
+public class CommandHelp implements Commandable {
 
 	@Override
-	public boolean execute(String param, Builder builder,CommandType type) {
+	public boolean execute(String param, Builderable builder,CommandType type) {
 		LoadMessages messages=LoadMessages.getInstance();
-		
+		//Selection of prefixes depending on operating modes
 		String prefix1= (type==CommandType.RUNFROMTERMINAL)?"helpcount":"helpcounti";
 		String prefix2= (type==CommandType.RUNFROMTERMINAL)?"help":"helpi";
 		
