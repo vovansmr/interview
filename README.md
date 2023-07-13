@@ -131,7 +131,6 @@ the following patterns were used in the development
 - singleton
 - strategy
 - adapter
-- iterator
 - factory
 - facade
 - lambda expressions were also used.
