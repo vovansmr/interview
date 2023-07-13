@@ -142,15 +142,15 @@ the following patterns were used in the development
 1. Download Project
 2. Compile:
 ```
-	javac SumCubes.java
+javac SumCubes.java
    ```
 3. Run:
  ```
-	java SumCubes
+java SumCubes
 ```
 4. Or run with parameters:
 ```
-  java SumCubes --algorithm=BRUTEFORSE [--help] [--min=1] [--max=50] [--writeinfooff] [--writesolutionon]
+java SumCubes --algorithm=BRUTEFORSE [--help] [--min=1] [--max=50] [--writeinfooff] [--writesolutionon]
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -202,7 +202,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- CONTACT -->
 ## Contact
-my name is Vladimir I am looking for a job as a java developer in Russia
+My name is Vladimir I am looking for a job as a java developer in Russia
 [Telegram](https://t.me/vovansmr)
 vovansmr@mail.ru
 
