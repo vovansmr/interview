@@ -1,7 +1,8 @@
 package utils;
+
 /**
  * Type of algorithms
  */
 public enum AlgorithmType {
-	NO,BRUTEFORSE,BRUTEFORSEFASTER,THEFASTEST
+	NO, BRUTEFORSE, BRUTEFORSEFASTER, THEFASTEST
 }

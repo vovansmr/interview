@@ -1,16 +1,18 @@
 package myinterfaces;
+
+/**
+ * Algorithm factory
+ */
+public interface SimpleAlgorithmFactory {
 	/**
-	 * Algorithm factory
+	 * Checking the No Error Flag
+	 * 
 	 */
-	public interface SimpleAlgorithmFactory {
+	public boolean getNoError();
+
 	/**
-	 *  Checking the No Error Flag
-	 *  
+	 * Creation of the algorithm
 	 */
-		public boolean getNoError();
-	/**
-	 * Creation of the algorithm	
-	 */
-	public Algorithmable GetAlgorithm(String algorithm) ;
+	public Algorithmable GetAlgorithm(String algorithm);
 
 }

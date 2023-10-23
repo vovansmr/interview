@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import myinterfaces.Writeble;
+
 /**
  * Solution Conclusion
  */
-public class WriteSolutionToConsole implements Writeble{
-	private List<Data> list =new ArrayList<Data>();
-	
+public class WriteSolutionToConsole implements Writeble {
+	private List<Data> list = new ArrayList<Data>();
+
 	class Data {
 		private int a;
 		private int b;
@@ -29,12 +30,12 @@ public class WriteSolutionToConsole implements Writeble{
 			result = prime * result + Objects.hash(a, b, c, d);
 			return result;
 		}
-			
-		public Data(int a,int b,int c,int d) {
+
+		public Data(int a, int b, int c, int d) {
 			this.a = a;
-			this.b = b;	
+			this.b = b;
 			this.c = c;
-			this.d = d;	
+			this.d = d;
 		}
 
 		@Override
@@ -53,23 +54,23 @@ public class WriteSolutionToConsole implements Writeble{
 
 		private WriteSolutionToConsole getEnclosingInstance() {
 			return WriteSolutionToConsole.this;
-		}		
-	}	
-	
-	//@Override
-	public void add(int a, int b, int c, int d) {
-		list.add(new Data(a,b,c,d));		
+		}
 	}
-	
+
+	// @Override
+	public void add(int a, int b, int c, int d) {
+		list.add(new Data(a, b, c, d));
+	}
+
 	@Override
 	public void clear() {
-		list.clear();		
+		list.clear();
 	}
 
 	@Override
 	public void printAll() {
-		list.forEach((data->{
+		list.forEach((data -> {
 			System.out.println(data);
-		}));		
+		}));
 	}
 }

@@ -1,4 +1,5 @@
 package myinterfaces;
+
 /**
  * Constants minimum, maximum values, path to file with properties
  */
@@ -14,6 +15,6 @@ public interface Constantable {
 	/**
 	 * Constants path to file with properties
 	 */
-	String fileProperties="resource/messages.properties";
-	
+	String fileProperties = "resource/messages.properties";
+
 }

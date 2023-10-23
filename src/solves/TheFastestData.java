@@ -1,6 +1,7 @@
 package solves;
 
 import java.util.Objects;
+
 /**
  * Class for storing the left side of the equation solution
  */
@@ -29,9 +30,9 @@ public class TheFastestData {
 		return Objects.hash(a, b);
 	}
 
-	public TheFastestData(int a,int b) {
+	public TheFastestData(int a, int b) {
 		this.a = a;
-		this.b = b;		
+		this.b = b;
 	}
 
 	@Override
