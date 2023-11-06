@@ -11,8 +11,9 @@ public class CommandRun implements Commandable {
 
 	@Override
 	public boolean execute(String param, Builderable builder, CommandType type) {
-		if (builder.checkParam())
+		if (builder.checkParam()) {
 			builder.buildAndRun();
+		}
 		return builder.getNoError();
 	}
 }

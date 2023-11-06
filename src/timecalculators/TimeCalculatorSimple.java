@@ -9,11 +9,12 @@ import utils.ProgressBar;
 /**
  * Class for time processing and for working with progress bar
  */
+@SuppressWarnings("ALL")
 public class TimeCalculatorSimple implements Temporally, Barable {
 	private long startTime, stopTime;
 	private ProgressBar progressBar;
 	private long totalCounter;
-	private LoadMessages messages = LoadMessages.getInstance();
+	private final LoadMessages messages = LoadMessages.getInstance();
 
 	/**
 	 * Start of processing Parameters:
@@ -61,9 +62,8 @@ public class TimeCalculatorSimple implements Temporally, Barable {
 	@Override
 	public String getStatus() {
 		if (startTime != 0 && stopTime != 0) {
-			String result = "\n" + messages.getProp("workingtime") + (stopTime - startTime) / 1.0 / ProgressBar.sec1
+			return "\n" + messages.getProp("workingtime") + (stopTime - startTime) / 1.0 / ProgressBar.SEC_1
 					+ messages.getProp("sec") + "\n";
-			return result;
 		}
 		return "";
 	}

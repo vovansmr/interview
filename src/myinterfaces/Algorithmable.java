@@ -15,13 +15,13 @@ public interface Algorithmable {
 	 * @param writeSolution enable output of service information
 	 * @param solution      output of the calculated solution
 	 */
-	public int calc(int min, int max, Barable calculator, boolean writeSolution, Writeble solution);
+	int calc(int min, int max, Barable calculator, boolean writeSolution, Writeble solution);
 
 	/**
 	 * Algorithm Type Inference
 	 * 
 	 * @return {@link AlgorithmType}
 	 */
-	public AlgorithmType getAlgorithmType();
+	AlgorithmType getAlgorithmType();
 
 }

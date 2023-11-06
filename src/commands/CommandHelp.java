@@ -17,8 +17,9 @@ public class CommandHelp implements Commandable {
 		String prefix2 = (type == CommandType.RUNFROMTERMINAL) ? "help" : "helpi";
 
 		int count = Integer.parseInt(messages.getProp(prefix1));
-		for (int i = 0; i < count; i++)
+		for (int i = 0; i < count; i++) {
 			System.out.println(messages.getProp(prefix2 + i));
+		}
 		return true;
 	}
 

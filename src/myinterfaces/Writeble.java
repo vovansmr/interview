@@ -8,16 +8,16 @@ public interface Writeble {
 	/**
 	 * Add Solutions to Array
 	 */
-	public void add(int a, int b, int c, int d);
+    void add(int a, int b, int c, int d);
 
 	/**
 	 * Clear array
 	 */
-	public void clear();
+    void clear();
 
 	/**
 	 * Print all solutions
 	 */
-	public void printAll();
+    void printAll();
 
 }

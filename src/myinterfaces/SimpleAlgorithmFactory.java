@@ -8,11 +8,11 @@ public interface SimpleAlgorithmFactory {
 	 * Checking the No Error Flag
 	 * 
 	 */
-	public boolean getNoError();
+	boolean getNoError();
 
 	/**
 	 * Creation of the algorithm
 	 */
-	public Algorithmable GetAlgorithm(String algorithm);
+	Algorithmable getAlgorithm(String algorithm);
 
 }

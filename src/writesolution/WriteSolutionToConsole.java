@@ -8,14 +8,15 @@ import myinterfaces.Writeble;
 /**
  * Solution Conclusion
  */
+@SuppressWarnings("unused")
 public class WriteSolutionToConsole implements Writeble {
-	private List<Data> list = new ArrayList<Data>();
+	private final List<Data> list = new ArrayList<>();
 
 	class Data {
-		private int a;
-		private int b;
-		private int c;
-		private int d;
+		private final int a;
+		private final int b;
+		private final int c;
+		private final int d;
 
 		@Override
 		public String toString() {
@@ -31,6 +32,7 @@ public class WriteSolutionToConsole implements Writeble {
 			return result;
 		}
 
+		@SuppressWarnings("unused")
 		public Data(int a, int b, int c, int d) {
 			this.a = a;
 			this.b = b;
@@ -40,15 +42,19 @@ public class WriteSolutionToConsole implements Writeble {
 
 		@Override
 		public boolean equals(Object obj) {
-			if (this == obj)
+			if (this == obj) {
 				return true;
-			if (obj == null)
+			}
+			if (obj == null) {
 				return false;
-			if (getClass() != obj.getClass())
+			}
+			if (getClass() != obj.getClass()) {
 				return false;
+			}
 			Data other = (Data) obj;
-			if (!getEnclosingInstance().equals(other.getEnclosingInstance()))
+			if (!getEnclosingInstance().equals(other.getEnclosingInstance())) {
 				return false;
+			}
 			return a == other.a && b == other.b && c == other.c && d == other.d;
 		}
 
@@ -58,19 +64,20 @@ public class WriteSolutionToConsole implements Writeble {
 	}
 
 	// @Override
+	@SuppressWarnings("unused")
 	public void add(int a, int b, int c, int d) {
 		list.add(new Data(a, b, c, d));
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	public void clear() {
 		list.clear();
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	public void printAll() {
-		list.forEach((data -> {
-			System.out.println(data);
-		}));
+		list.forEach((System.out::println));
 	}
 }

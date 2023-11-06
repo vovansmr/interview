@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import myinterfaces.Constantable;
+import myinterfaces.Constant;
 
 /**
  * Loading messages from a file Implemented as a singleton design pattern
@@ -18,13 +18,14 @@ public class LoadMessages {
 	 * Implemented as a singleton design pattern
 	 */
 	public static LoadMessages getInstance() {
-		if (loadMessages == null)
+		if (loadMessages == null) {
 			loadMessages = new LoadMessages();
+		}
 		return loadMessages;
 	}
 
 	private LoadMessages() {
-		load(Constantable.fileProperties);
+		load(Constant.FILE_PROPERTIES);
 	}
 
 	/**
@@ -37,6 +38,7 @@ public class LoadMessages {
 	/**
 	 * loading properties from file
 	 */
+	@SuppressWarnings("CallToPrintStackTrace")
 	public void load(String filename) {
 		try (InputStream input = getClass().getClassLoader().getResourceAsStream(filename)) {
 			prop = new Properties();

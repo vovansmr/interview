@@ -12,7 +12,7 @@ import solves.TheFastest;
 public class AlgorithmFactory implements SimpleAlgorithmFactory {
 
 	private boolean noError = true;
-	private LoadMessages messages = LoadMessages.getInstance();
+	private final LoadMessages messages = LoadMessages.getInstance();
 
 	/**
 	 * Checking the No Error Flag
@@ -28,7 +28,7 @@ public class AlgorithmFactory implements SimpleAlgorithmFactory {
 	 * Factory for creating algorithms
 	 */
 	@Override
-	public Algorithmable GetAlgorithm(String algorithm) {
+	public Algorithmable getAlgorithm(String algorithm) {
 		Algorithmable algo = null;
 		switch (algorithm) {
 		case "bruteforse":

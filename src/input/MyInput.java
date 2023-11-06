@@ -2,14 +2,14 @@ package input;
 
 import myinterfaces.Inputable;
 import utils.CheckMinMaxClass;
-import myinterfaces.Constantable;
+import myinterfaces.Constant;
 
 /**
  * Class for storing data entered by the user
  */
 public class MyInput implements Inputable {
-	private int min = Constantable.MIN;
-	private int max = Constantable.MAX;
+	private int min = Constant.MIN;
+	private int max = Constant.MAX;
 	/**
 	 * Displaying the solution of an equation.
 	 */
@@ -21,7 +21,7 @@ public class MyInput implements Inputable {
 	/**
 	 * Class for checking min and max parameters
 	 */
-	private CheckMinMaxClass check = CheckMinMaxClass.getInstance();
+	private final CheckMinMaxClass check = CheckMinMaxClass.getInstance();
 
 	@Override
 	public int getMin() {
@@ -33,8 +33,9 @@ public class MyInput implements Inputable {
 	 */
 	@Override
 	public void setMin(int min) {
-		if (check.checkMinMax(min, max, false))
+		if (check.checkMinMax(min, max, false)) {
 			this.min = min;
+		}
 	}
 
 	@Override
@@ -47,8 +48,9 @@ public class MyInput implements Inputable {
 	 */
 	@Override
 	public void setMax(int max) {
-		if (check.checkMinMax(min, max, false))
+		if (check.checkMinMax(min, max, false)) {
 			this.max = max;
+		}
 	}
 
 	/**

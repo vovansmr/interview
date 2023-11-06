@@ -15,6 +15,6 @@ public interface Commandable {
 	 * @param type    mode with parameters or interactive {@link CommandType}
 	 * @return Returns true if the command was successful
 	 */
-	public boolean execute(String param, Builderable builder, CommandType type);
+    boolean execute(String param, Builderable builder, CommandType type);
 
 }

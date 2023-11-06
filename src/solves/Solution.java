@@ -12,12 +12,13 @@ import writesolution.WriteSolutionToConsole;
 /**
  * Class for managing solution calculation
  */
+@SuppressWarnings("unused")
 public class Solution {
 	private Inputable inputs = null;
 	private Algorithmable algorithm = null;
-	private Temporally calculator = new TimeCalculatorSimple();
-	private LoadMessages messages = LoadMessages.getInstance();
-	private Writeble solution = new WriteSolutionToConsole();
+	private final Temporally calculator = new TimeCalculatorSimple();
+	private final LoadMessages messages = LoadMessages.getInstance();
+	private final Writeble solution = new WriteSolutionToConsole();
 
 	/**
 	 * Gets the algorithm to calculate
@@ -76,16 +77,17 @@ public class Solution {
 	/**
 	 * Method to start calculations
 	 * 
-	 * @return returns the number of solutions found
 	 */
-	public int calc() {
-		int result = 0;
+	public void calc() {
+		@SuppressWarnings("UnusedAssignment") int result = 0;
 		// Parameter Check
-		if (inputs == null || algorithm == null)
+		if (inputs == null || algorithm == null) {
 			throw new IllegalArgumentException(messages.getProp("inputsER"));
-		if (inputs.getWriteInfo())
+		}
+		if (inputs.getWriteInfo()) {
 			System.out.println(messages.getProp("StartAL") + algorithm.getAlgorithmType() + messages.getProp("min")
 					+ inputs.getMin() + messages.getProp("max") + inputs.getMax() + messages.getProp("dot"));
+		}
 		// Preparing for time processing
 		calculator.start(inputs.getWriteInfo());
 		// Start calculation of equation values
@@ -98,12 +100,13 @@ public class Solution {
 		// Clear array
 		solution.clear();
 		// Output of service information
-		if (inputs.getWriteInfo())
+		if (inputs.getWriteInfo()) {
 			System.out.println(messages.getProp("found") + result + messages.getProp("solutions"));
-		if (inputs.getWriteInfo())
+		}
+		if (inputs.getWriteInfo()) {
 			System.out.println(messages.getProp("endalgo") + algorithm.getAlgorithmType() + messages.getProp("dot")
 					+ calculator.getStatus());
-		return result;
+		}
 	}
 
 }

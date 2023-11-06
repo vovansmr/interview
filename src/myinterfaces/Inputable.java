@@ -6,61 +6,61 @@ package myinterfaces;
 public interface Inputable {
 	/**
 	 * Get the minimum value of the algorithm The minimum value
-	 * {@link Constantable#MIN} and maximum value {@link Constantable#MAX}
+	 * {@link Constant#MIN} and maximum value {@link Constant#MAX}
 	 * 
 	 * @return minimum value of the algorithm
 	 */
-	public int getMin();
+    int getMin();
 
 	/**
 	 * Set the minimum value of the algorithm The minimum value
-	 * {@link Constantable#MIN} and maximum value {@link Constantable#MAX}
+	 * {@link Constant#MIN} and maximum value {@link Constant#MAX}
 	 * 
 	 * @param min minimum value of the algorithm
 	 */
-	public void setMin(int min);
+    void setMin(int min);
 
 	/**
 	 * Get the maximum value of the algorithm The minimum value
-	 * {@link Constantable#MIN} and maximum value {@link Constantable#MAX} maximum
+	 * {@link Constant#MIN} and maximum value {@link Constant#MAX} maximum
 	 * value of the algorithm
 	 */
-	public int getMax();
+    int getMax();
 
 	/**
 	 * Set the maximum value of the algorithm The minimum value
-	 * {@link Constantable#MIN} and maximum value {@link Constantable#MAX}
+	 * {@link Constant#MIN} and maximum value {@link Constant#MAX}
 	 * 
 	 * @param max maximum value of the algorithm
 	 */
-	public void setMax(int max);
+    void setMax(int max);
 
 	/**
 	 * Set displaying the solution of an equation
 	 * 
 	 * @param writeSolution displaying the solution of an equation by default off
 	 */
-	public void setWriteSolution(boolean writeSolution);
+    void setWriteSolution(boolean writeSolution);
 
 	/**
 	 * Get displaying the solution of an equation
 	 * 
 	 * @return writeSolution displaying the solution of an equation by default off
 	 */
-	public boolean getWriteSolution();
+    boolean getWriteSolution();
 
 	/**
 	 * Get disable output of service information
 	 * 
 	 * @return disable output of service information by default on
 	 */
-	public boolean getWriteInfo();
+    boolean getWriteInfo();
 
 	/**
 	 * Set disable output of service information be default on
 	 * 
-	 * @param disable output of service information by default on
+	 * @param writeInfo disable output of service information by default on
 	 */
-	public void setWriteInfo(boolean writeInfo);
+    void setWriteInfo(boolean writeInfo);
 
 }

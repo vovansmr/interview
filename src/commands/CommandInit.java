@@ -25,7 +25,7 @@ public class CommandInit {
 			pref = "";
 			pref2 = "";
 		}
-		HashMap<String, Commandable> map = new HashMap<String, Commandable>();
+		HashMap<String, Commandable> map = new HashMap<>();
 		map.put(pref + "min", new CommandAddMin());
 		map.put(pref + "max", new CommandAddMax());
 		map.put(pref + "writeinfooff", new CommandAddWriteInfoOff());

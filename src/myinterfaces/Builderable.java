@@ -3,6 +3,7 @@ package myinterfaces;
 /**
  * Template builder
  */
+@SuppressWarnings("UnusedReturnValue")
 public interface Builderable {
 	/**
 	 * Add the selected algorithm to the queue
@@ -53,13 +54,13 @@ public interface Builderable {
 	 * 
 	 * @return returns true if there are no errors
 	 */
-	public boolean checkParam();
+    boolean checkParam();
 
 	/**
 	 * Checking the No Error Flag
 	 * 
 	 * @return returns true if there are no errors
 	 */
-	public boolean getNoError();
+    boolean getNoError();
 
 }

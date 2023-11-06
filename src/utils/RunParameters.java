@@ -8,7 +8,7 @@ import myinterfaces.Inputable;
  * Class for storing data about the algorithm and data entered by the user
  */
 public class RunParameters {
-	private Inputable input = new MyInput();
+	private final Inputable input = new MyInput();
 	private Algorithmable algorithm = null;
 
 	public int getMin() {
@@ -33,7 +33,6 @@ public class RunParameters {
 
 	public void setWriteSolution(boolean writeSolution) {
 		input.setWriteSolution(writeSolution);
-		;
 	}
 
 	public boolean isWriteInfo() {
@@ -42,7 +41,6 @@ public class RunParameters {
 
 	public void setWriteInfo(boolean writeInfo) {
 		input.setWriteInfo(writeInfo);
-		;
 	}
 
 	public Algorithmable getAlgorithm() {

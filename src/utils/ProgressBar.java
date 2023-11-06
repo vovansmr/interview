@@ -3,17 +3,21 @@ package utils;
 /**
  * Class progress bar
  */
+@SuppressWarnings("unused")
 public class ProgressBar {
 	final String iconLeftBoundary = "[";
 	final String iconDone = "=";
 	final String iconRemain = ".";
 	final String iconRightBoundary = "]";
-	public static final long sec1 = 1000000000;
-	private final int size = 10;
+	final public static long SEC_1 = 1000000000;
+	@SuppressWarnings("FieldCanBeLocal")
+	final private int size = 10;
+	@SuppressWarnings("UnusedAssignment")
 	private long lastDone = 0;
+	@SuppressWarnings("UnusedAssignment")
 	private long startTimer = 0;
 	private boolean enable = true;
-	private LoadMessages messages = LoadMessages.getInstance();
+	private final LoadMessages messages = LoadMessages.getInstance();
 
 	/**
 	 * Calculation of the remaining time of the algorithm
@@ -21,7 +25,7 @@ public class ProgressBar {
 	public String getTime(long done, long total) {
 		StringBuilder time = new StringBuilder(messages.getProp("timeleft"));
 		long currentTime = System.nanoTime();
-		long tmp = (long) (((currentTime - startTimer) * (total * 1.0 / done) - (currentTime - startTimer)) / sec1);
+		long tmp = (long) (((currentTime - startTimer) * (total * 1.0 / done) - (currentTime - startTimer)) / SEC_1);
 		time.append(tmp);
 		time.append(messages.getProp("sec"));
 		return time.toString();
@@ -33,7 +37,7 @@ public class ProgressBar {
 	public void progressPercentage(long done, long total) {
 		long donePercents = (100 * done) / total;
 		if (enable && (100 == donePercents || System.nanoTime() > lastDone)) {
-			lastDone = System.nanoTime() + sec1;
+			lastDone = System.nanoTime() + SEC_1;
 			if (done > total) {
 				throw new IllegalArgumentException(messages.getProp("done") + done + messages.getProp("total") + total);
 			}
@@ -55,9 +59,8 @@ public class ProgressBar {
 	}
 
 	public ProgressBar(long startTimer) {
-		lastDone = System.nanoTime() + sec1;
+		lastDone = System.nanoTime() + SEC_1;
 		this.startTimer = startTimer;
-		;
 	}
 
 	/**

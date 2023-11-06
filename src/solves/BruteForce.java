@@ -27,18 +27,22 @@ public class BruteForce implements Algorithmable {
 		counter *= counter * counter * counter;
 		calculator.setTotalCounter(counter);
 		counter = 0;
-		for (int a = min; a <= max; a++)
-			for (int b = min; b <= max; b++)
-				for (int c = min; c <= max; c++)
+		for (int a = min; a <= max; a++) {
+			for (int b = min; b <= max; b++) {
+				for (int c = min; c <= max; c++) {
 					for (int d = min; d <= max; d++) {
 						if (Math.pow(a, 3) + Math.pow(b, 3) == Math.pow(c, 3) + Math.pow(d, 3)) {
 							countSolution++;
 							// Output of the calculated solution
-							if (writeSolution)
+							if (writeSolution) {
 								solution.add(a, b, c, d);
+							}
 						}
 						calculator.setCounter(++counter);
 					}
+				}
+			}
+		}
 		return countSolution;
 	}
 }

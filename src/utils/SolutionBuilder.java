@@ -16,11 +16,11 @@ import solves.Solution;
 public class SolutionBuilder implements Builderable {
 
 	private RunParameters parameters = null;
-	private Queue<RunParameters> run = new ArrayDeque<RunParameters>();
+	private final Queue<RunParameters> run = new ArrayDeque<>();
 	private boolean noError = true;
-	private LoadMessages messages = LoadMessages.getInstance();
-	private CheckMinMaxClass check = CheckMinMaxClass.getInstance();
-	private SimpleAlgorithmFactory factory = new AlgorithmFactory();
+	private final LoadMessages messages = LoadMessages.getInstance();
+	private final CheckMinMaxClass check = CheckMinMaxClass.getInstance();
+	private final SimpleAlgorithmFactory factory = new AlgorithmFactory();
 
 	/**
 	 * Checking the No Error Flag
@@ -34,21 +34,25 @@ public class SolutionBuilder implements Builderable {
 	/**
 	 * Add the selected algorithm to the queue
 	 */
+	@SuppressWarnings("IfStatementWithIdenticalBranches")
 	@Override
 	public Builderable addSolution(String algorithm) {
-		if (parameters == null)
+		if (parameters == null) {
 			parameters = new RunParameters();
-		else {
-			if (parameters.getAlgorithm().getAlgorithmType() != AlgorithmType.NO)
+		} else {
+			if (parameters.getAlgorithm().getAlgorithmType() != AlgorithmType.NO) {
 				run.add(parameters);
+			}
 			parameters = new RunParameters();
 		}
-		Algorithmable algo = factory.GetAlgorithm(algorithm);
-		if (algo != null)
+		Algorithmable algo = factory.getAlgorithm(algorithm);
+		if (algo != null) {
 			parameters.setAlgorithm(algo);
+		}
 		noError = factory.getNoError();
-		if (!noError)
+		if (!noError) {
 			parameters = null;
+		}
 		return this;
 	}
 
@@ -70,8 +74,9 @@ public class SolutionBuilder implements Builderable {
 	 */
 	@Override
 	public Builderable setMin(int min) {
-		if (check(messages.getProp("selectalgo")))
+		if (check(messages.getProp("selectalgo"))) {
 			parameters.setMin(min);
+		}
 		return this;
 	}
 
@@ -80,8 +85,9 @@ public class SolutionBuilder implements Builderable {
 	 */
 	@Override
 	public Builderable setMax(int max) {
-		if (check(messages.getProp("selectalgo")))
+		if (check(messages.getProp("selectalgo"))) {
 			parameters.setMax(max);
+		}
 		return this;
 	}
 
@@ -90,8 +96,9 @@ public class SolutionBuilder implements Builderable {
 	 */
 	@Override
 	public Builderable writeSolutionOn() {
-		if (check(messages.getProp("selectalgo")))
+		if (check(messages.getProp("selectalgo"))) {
 			parameters.setWriteSolution(true);
+		}
 		return this;
 	}
 
@@ -100,8 +107,9 @@ public class SolutionBuilder implements Builderable {
 	 */
 	@Override
 	public Builderable writeInfoOff() {
-		if (check(messages.getProp("selectalgo")))
+		if (check(messages.getProp("selectalgo"))) {
 			parameters.setWriteInfo(false);
+		}
 		return this;
 	}
 
@@ -110,9 +118,9 @@ public class SolutionBuilder implements Builderable {
 	 */
 	public boolean checkParam() {
 		for (RunParameters param : run) {
-			if (!check(messages.getProp("wrongalgorithm")))
+			if (!check(messages.getProp("wrongalgorithm"))) {
 				return false;
-
+			}
 			if (!(check.checkMinMax(param.getMin(), param.getMax(), true))) {
 				System.err.println(check.getMinError() + "\n" + check.getMaxError());
 				noError = false;

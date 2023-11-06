@@ -5,6 +5,7 @@ import java.util.Objects;
 /**
  * Class for storing the left side of the equation solution
  */
+@SuppressWarnings("unused")
 public class TheFastestData {
 	private int a;
 	private int b;
@@ -37,12 +38,15 @@ public class TheFastestData {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		TheFastestData other = (TheFastestData) obj;
 		return a == other.a && b == other.b;
 	}

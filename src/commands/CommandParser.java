@@ -15,14 +15,15 @@ import utils.SolutionBuilder;
  */
 public class CommandParser {
 	private HashMap<String, Commandable> map;
-	private CommandType type;
+	private final CommandType type;
 	private Builderable builder;
 	private String[] args = null;
-	LoadMessages messages = LoadMessages.getInstance();
+	final LoadMessages messages = LoadMessages.getInstance();
 
 	/**
 	 * Without parameters, initiating interactive mode
 	 */
+	@SuppressWarnings("unused")
 	public CommandParser() {
 		type = CommandType.RUNINTERACTIVE;
 		init();
@@ -48,12 +49,12 @@ public class CommandParser {
 		builder = new SolutionBuilder();
 		CommandInit commandInit = new CommandInit();
 		map = commandInit.getInitedCommands(type);
-
 	}
 
 	/**
 	 * Basic user command processing
 	 */
+	@SuppressWarnings("ConstantValue")
 	private boolean parseCommands(String[] workString) {
 		boolean noError = true;
 		String[] tmp;
@@ -62,10 +63,11 @@ public class CommandParser {
 			Commandable commands = map.get(tmp[0].trim());
 			if (commands != null && noError) {
 				try {
-					if (tmp.length == 2)
+					if (tmp.length == 2) {
 						noError = commands.execute(tmp[1].trim(), builder, type);
-					else
+					} else {
 						noError = commands.execute("", builder, type);
+					}
 				} catch (Exception exc) {
 					System.err.println(messages.getProp("error") + workString[i]);
 					noError = false;
@@ -81,7 +83,8 @@ public class CommandParser {
 	/**
 	 * Parser for processing user commands in interactive mode
 	 */
-	private void parse_interactive() {
+	@SuppressWarnings({"InfiniteLoopStatement", "UnusedAssignment"})
+	private void parseInteractive() {
 		BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println(messages.getProp("interactive"));
 		String commands = "";
@@ -93,8 +96,9 @@ public class CommandParser {
 				commands = read.readLine();
 				workString = commands.split("[ ]");
 				noError = parseCommands(workString);
-				if (noError)
+				if (noError) {
 					System.out.println(messages.getProp("ok"));
+				}
 				noError = true;
 			}
 		} catch (IOException e) {
@@ -107,12 +111,13 @@ public class CommandParser {
 	 * Parser for processing user commands with parameters
 	 */
 	public void parse() {
-		if (type == CommandType.RUNINTERACTIVE)
-			parse_interactive();
-		else {
+		if (type == CommandType.RUNINTERACTIVE) {
+			parseInteractive();
+		} else {
 			boolean noError = parseCommands(args);
-			if (noError && !(args.length == 1 && (args[0].equals("-h") || args[0].equals("--help"))))
+			if (noError && !(args.length == 1 && (args[0].equals("-h") || args[0].equals("--help")))) {
 				builder.buildAndRun();
+			}
 		}
 	}
 }
